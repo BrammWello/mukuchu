@@ -192,7 +192,8 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             // go to main menu
-            // reload();
+            startActivity(new Intent(MainActivity.this, HomePageActivity.class));
+            finish();
         }
     }
 
