@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firebase_database_url" translatable="false">https://mukuchu-savings-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">281320297896</string>
+    <string name="google_api_key" translatable="false">AIzaSyC_XOHu3wpeX-yS5sHuk71N-syjIutvdLQ</string>
+    <string name="google_app_id" translatable="false">1:281320297896:android:a1e055afc42726888b399d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC_XOHu3wpeX-yS5sHuk71N-syjIutvdLQ</string>
+    <string name="google_storage_bucket" translatable="false">mukuchu-savings.firebasestorage.app</string>
+    <string name="project_id" translatable="false">mukuchu-savings</string>
+</resources>

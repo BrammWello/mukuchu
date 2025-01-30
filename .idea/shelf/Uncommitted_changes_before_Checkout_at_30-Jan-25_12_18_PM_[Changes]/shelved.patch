@@ -1,0 +1,548 @@
+Index: app/src/main/java/com/devbramm/mukuchusavings/HomePageActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.devbramm.mukuchusavings;\r\n\r\nimport android.os.Bundle;\r\n\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.navigation.NavController;\r\nimport androidx.navigation.Navigation;\r\nimport androidx.navigation.ui.AppBarConfiguration;\r\nimport androidx.navigation.ui.NavigationUI;\r\n\r\nimport com.devbramm.mukuchusavings.databinding.ActivityHomePageBinding;\r\nimport com.google.firebase.FirebaseApp;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\n\r\npublic class HomePageActivity extends AppCompatActivity {\r\n\r\n    private ActivityHomePageBinding binding;\r\n    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        binding = ActivityHomePageBinding.inflate(getLayoutInflater());\r\n        setContentView(binding.getRoot());\r\n\r\n        BottomNavigationView navView = findViewById(R.id.nav_view);\r\n        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(\r\n                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)\r\n                .build();\r\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home_page);\r\n\r\n        FirebaseApp.initializeApp(this); // Initialize Firebase once\r\n\r\n\r\n        // Removed ActionBar setup\r\n        NavigationUI.setupWithNavController(binding.navView, navController);\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    public FirebaseAuth getFirebaseAuth() {\r\n        return mAuth;\r\n    }\r\n\r\n//    public FirebaseDatabase getFirebaseDatabase() {\r\n//        return mAuth;\r\n//    }\r\n}\r\n
+===================================================================
+diff --git a/app/src/main/java/com/devbramm/mukuchusavings/HomePageActivity.java b/app/src/main/java/com/devbramm/mukuchusavings/HomePageActivity.java
+--- a/app/src/main/java/com/devbramm/mukuchusavings/HomePageActivity.java	(revision beaa42350d95ca40475a8cc36dc2e169d462692b)
++++ b/app/src/main/java/com/devbramm/mukuchusavings/HomePageActivity.java	(date 1738154039924)
+@@ -13,11 +13,13 @@
+ import com.devbramm.mukuchusavings.databinding.ActivityHomePageBinding;
+ import com.google.firebase.FirebaseApp;
+ import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.firestore.FirebaseFirestore;
+ 
+ public class HomePageActivity extends AppCompatActivity {
+ 
+     private ActivityHomePageBinding binding;
+     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
++    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -34,19 +36,18 @@
+ 
+         FirebaseApp.initializeApp(this); // Initialize Firebase once
+ 
+-
+         // Removed ActionBar setup
+         NavigationUI.setupWithNavController(binding.navView, navController);
+-
+-
+     }
+-
+-
+ 
+     public FirebaseAuth getFirebaseAuth() {
+         return mAuth;
+     }
+ 
++    public FirebaseFirestore getFirebaseFirestore() {
++        return db;
++    }
++
+ //    public FirebaseDatabase getFirebaseDatabase() {
+ //        return mAuth;
+ //    }
+Index: app/src/main/java/com/devbramm/mukuchusavings/ui/home/HomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.devbramm.mukuchusavings.ui.home;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.Button;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.lifecycle.ViewModelProvider;\r\n\r\nimport com.devbramm.mukuchusavings.AddTransactionActivity;\r\nimport com.devbramm.mukuchusavings.HomePageActivity;\r\nimport com.devbramm.mukuchusavings.R;\r\nimport com.devbramm.mukuchusavings.databinding.FragmentHomeBinding;\r\nimport com.github.mikephil.charting.charts.LineChart;\r\nimport com.github.mikephil.charting.components.XAxis;\r\nimport com.github.mikephil.charting.data.Entry;\r\nimport com.github.mikephil.charting.data.LineData;\r\nimport com.github.mikephil.charting.data.LineDataSet;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\n\r\nimport java.text.SimpleDateFormat;\r\nimport java.util.ArrayList;\r\nimport java.util.Calendar;\r\n\r\npublic class HomeFragment extends Fragment {\r\n\r\n    private FragmentHomeBinding binding;\r\n    private TextView tvUserName, tvDate;\r\n    private LineChart lineChart;\r\n    private FirebaseAuth firebaseAuth;\r\n    private Button toAddTransaction;\r\n\r\n    public View onCreateView(@NonNull LayoutInflater inflater,\r\n                             ViewGroup container, Bundle savedInstanceState) {\r\n        HomeViewModel homeViewModel =\r\n                new ViewModelProvider(this).get(HomeViewModel.class);\r\n\r\n        binding = FragmentHomeBinding.inflate(inflater, container, false);\r\n        View root = binding.getRoot();\r\n\r\n        lineChart = root.findViewById(R.id.lineChart);\r\n        tvUserName = root.findViewById(R.id.tv_user_name_greeting);\r\n        tvDate = root.findViewById(R.id.tv_date);\r\n        toAddTransaction = root.findViewById(R.id.btn_to_add_transaction);\r\n        setupUI();\r\n        setupWeeklyChart();\r\n\r\n        return root;\r\n    }\r\n\r\n    @Override\r\n    public void onDestroyView() {\r\n        super.onDestroyView();\r\n        binding = null;\r\n    }\r\n\r\n    private void setupUI() {\r\n        // Correct way: Access Firebase instance from the parent activity\r\n        HomePageActivity activity = (HomePageActivity) getActivity();\r\n        if (activity != null) {\r\n            firebaseAuth = activity.getFirebaseAuth();  // Use the shared instance\r\n        }\r\n\r\n        // Check if Firebase Auth is properly initialized and user is signed in\r\n        if (firebaseAuth != null && firebaseAuth.getCurrentUser() != null) {\r\n            String displayName = firebaseAuth.getCurrentUser().getDisplayName();\r\n\r\n            if (displayName != null && !displayName.isEmpty()) {\r\n                tvUserName.setText(\"Hello, \" + displayName + \" \uD83D\uDC4B\");\r\n            } else {\r\n                tvUserName.setText(\"Hello, User!\");\r\n            }\r\n        } else {\r\n            tvUserName.setText(\"Not Signed In\");\r\n        }\r\n\r\n        // Display the current date in the desired format\r\n        SimpleDateFormat sdf = new SimpleDateFormat(\"EEEE, dd MMMM yyyy\", java.util.Locale.getDefault());\r\n        String currentDate = sdf.format(Calendar.getInstance().getTime());\r\n        tvDate.setText(\"Today is \" + currentDate);\r\n\r\n        //add transaction button\r\n        toAddTransaction.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(getContext(), AddTransactionActivity.class));\r\n            }\r\n        });\r\n    }\r\n\r\n    private void setupWeeklyChart() {\r\n        ArrayList<Entry> entries = new ArrayList<>();\r\n\r\n        // Populate data for weeks (X-axis from Week 1 to Week 52)\r\n        for (int i = 1; i <= 52; i++) {\r\n            float yValue = (float) (Math.random() * 500); // Random value for demonstration\r\n            entries.add(new Entry(i, yValue));\r\n        }\r\n\r\n        LineDataSet dataSet = new LineDataSet(entries, \"Weekly Savings\");\r\n        dataSet.setColor(getResources().getColor(R.color.colorPrimary));\r\n        dataSet.setValueTextColor(getResources().getColor(R.color.black));\r\n        dataSet.setLineWidth(2f);\r\n        dataSet.setCircleRadius(4f);\r\n        dataSet.setCircleColor(getResources().getColor(R.color.colorPrimaryDark));\r\n\r\n        LineData lineData = new LineData(dataSet);\r\n        lineChart.setData(lineData);\r\n        lineChart.invalidate(); // Refresh the chart\r\n\r\n        // Customize X-Axis for Week Labels\r\n        XAxis xAxis = lineChart.getXAxis();\r\n        xAxis.setGranularity(1f); // Display each week\r\n        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);\r\n        xAxis.setValueFormatter(new com.github.mikephil.charting.formatter.ValueFormatter() {\r\n            @Override\r\n            public String getFormattedValue(float value) {\r\n                return \"Week \" + ((int) value);\r\n            }\r\n        });\r\n    }\r\n}
+===================================================================
+diff --git a/app/src/main/java/com/devbramm/mukuchusavings/ui/home/HomeFragment.java b/app/src/main/java/com/devbramm/mukuchusavings/ui/home/HomeFragment.java
+--- a/app/src/main/java/com/devbramm/mukuchusavings/ui/home/HomeFragment.java	(revision beaa42350d95ca40475a8cc36dc2e169d462692b)
++++ b/app/src/main/java/com/devbramm/mukuchusavings/ui/home/HomeFragment.java	(date 1738156640504)
+@@ -2,6 +2,7 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+@@ -12,29 +13,50 @@
+ import androidx.annotation.NonNull;
+ import androidx.fragment.app.Fragment;
+ import androidx.lifecycle.ViewModelProvider;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
+ 
+ import com.devbramm.mukuchusavings.AddTransactionActivity;
+ import com.devbramm.mukuchusavings.HomePageActivity;
+ import com.devbramm.mukuchusavings.R;
++import com.devbramm.mukuchusavings.adapters.RecentTransactionsAdapter;
+ import com.devbramm.mukuchusavings.databinding.FragmentHomeBinding;
++import com.devbramm.mukuchusavings.models.TransactionRecord;
+ import com.github.mikephil.charting.charts.LineChart;
+ import com.github.mikephil.charting.components.XAxis;
+ import com.github.mikephil.charting.data.Entry;
+ import com.github.mikephil.charting.data.LineData;
+ import com.github.mikephil.charting.data.LineDataSet;
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.Task;
++import com.google.firebase.Timestamp;
+ import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.firestore.DocumentSnapshot;
++import com.google.firebase.firestore.FirebaseFirestore;
++import com.google.firebase.firestore.Query;
++import com.google.firebase.firestore.QuerySnapshot;
+ 
+ import java.text.SimpleDateFormat;
+ import java.util.ArrayList;
+ import java.util.Calendar;
++import java.util.Collections;
++import java.util.Date;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++import java.util.Locale;
+ 
+ public class HomeFragment extends Fragment {
+ 
+     private FragmentHomeBinding binding;
+-    private TextView tvUserName, tvDate;
++    private TextView tvUserName, tvDate, tvCurrentSavingsAmount, tvGoalPercentage, tvRemainingWeeks;
+     private LineChart lineChart;
+     private FirebaseAuth firebaseAuth;
++    private FirebaseFirestore db;
+     private Button toAddTransaction;
++    private RecyclerView rvRecentTransactions;
++    private RecentTransactionsAdapter adapter;
++    private List<TransactionRecord> transactionList;
+ 
+     public View onCreateView(@NonNull LayoutInflater inflater,
+                              ViewGroup container, Bundle savedInstanceState) {
+@@ -47,7 +69,11 @@
+         lineChart = root.findViewById(R.id.lineChart);
+         tvUserName = root.findViewById(R.id.tv_user_name_greeting);
+         tvDate = root.findViewById(R.id.tv_date);
++        tvCurrentSavingsAmount = root.findViewById(R.id.tv_current_savings_amount);
+         toAddTransaction = root.findViewById(R.id.btn_to_add_transaction);
++        tvGoalPercentage = root.findViewById(R.id.tv_goal_percentage);
++        tvRemainingWeeks = root.findViewById(R.id.tv_remaining_weeks);
++        rvRecentTransactions = root.findViewById(R.id.rv_recent_transactions);
+         setupUI();
+         setupWeeklyChart();
+ 
+@@ -65,6 +91,7 @@
+         HomePageActivity activity = (HomePageActivity) getActivity();
+         if (activity != null) {
+             firebaseAuth = activity.getFirebaseAuth();  // Use the shared instance
++            db = activity.getFirebaseFirestore();
+         }
+ 
+         // Check if Firebase Auth is properly initialized and user is signed in
+@@ -78,6 +105,7 @@
+             }
+         } else {
+             tvUserName.setText("Not Signed In");
++            // TODO make user go to sign in screen
+         }
+ 
+         // Display the current date in the desired format
+@@ -92,37 +120,161 @@
+                 startActivity(new Intent(getContext(), AddTransactionActivity.class));
+             }
+         });
+-    }
++
++        //receycler view setup
++        rvRecentTransactions.setLayoutManager(new LinearLayoutManager(getActivity()));
++        transactionList = new ArrayList<>();
++        adapter = new RecentTransactionsAdapter(transactionList);
++        rvRecentTransactions.setAdapter(adapter);
++
++        db.collection("transactions")
++                .document(firebaseAuth.getCurrentUser().getUid())
++                .collection("userTransactions")
++                .orderBy("transactionDate", Query.Direction.DESCENDING) // Latest transactions first
++                .get()
++                .addOnCompleteListener(task -> {
++                    if (task.isSuccessful()) {
++                        transactionList.clear();
++                        for (DocumentSnapshot document : task.getResult()) {
++                            TransactionRecord transaction = document.toObject(TransactionRecord.class);
++                            if (transaction != null) {
++                                transactionList.add(transaction);
++                                Log.d("Firestore", "Transaction: " + transaction.getTransactionDate() +
++                                        " - Ksh " + transaction.getTransactionAmount());
++                            }
++                        }
++                        Toast.makeText(getActivity(), "Got " + transactionList.size(), Toast.LENGTH_SHORT).show();
++                        adapter.notifyDataSetChanged();
++                        Log.d("Firestore", "Transactions loaded successfully.");
++                    } else {
++                        Log.e("Firestore", "Error fetching transactions: ", task.getException());
++                        Toast.makeText(getActivity(), "Failed to load transactions.", Toast.LENGTH_SHORT).show();
++                    }
++                });
+ 
++    }
+     private void setupWeeklyChart() {
+-        ArrayList<Entry> entries = new ArrayList<>();
++        Log.d("ChartDebug", "Fetching data from Firestore...");
++
++        db.collection("transactions")
++                .document(firebaseAuth.getCurrentUser().getUid()) // Get current user's document
++                .collection("userTransactions") // Access their transactions
++                .orderBy("transactionDate", Query.Direction.ASCENDING) // Order transactions by date
++                .get()
++                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
++                    @Override
++                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
++                        if (task.isSuccessful()) {
++                            ArrayList<Entry> entries = new ArrayList<>();
++                            Map<Integer, Float> weeklySavings = new HashMap<>();
++                            SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMM yyyy", Locale.ENGLISH);
++
++                            Log.d("ChartDebug", "Transaction fetch successful. Processing data...");
++
++                            float currentSavingsAmount = 0.0F;
++
++                            for (DocumentSnapshot document : task.getResult()) {
++                                if (document.exists()) {
++                                    Log.d("ChartDebug", "Processing transaction: " + document.getId());
++
++                                    // Extract transaction amount
++                                    Double amountDouble = document.getDouble("transactionAmount");
++                                    if (amountDouble == null) {
++                                        Log.e("ChartDebug", "Amount field missing in document: " + document.getId());
++                                        continue;
++                                    }
++                                    float amount = amountDouble.floatValue();
++                                    currentSavingsAmount = currentSavingsAmount + amount;
++                                    Log.d("ChartDebug", "Amount: " + amount);
++
++                                    // Extract and parse transactionDate (stored as string)
++                                    String dateString = document.getString("transactionDate");
++                                    if (dateString == null) {
++                                        Log.e("ChartDebug", "Transaction Date field missing in document: " + document.getId());
++                                        continue;
++                                    }
++
++                                    Date date;
++                                    try {
++                                        date = dateFormat.parse(dateString);
++                                    } catch (Exception e) {
++                                        Log.e("ChartDebug", "Error parsing date: " + dateString + " -> " + e.getMessage());
++                                        continue;
++                                    }
++                                    Log.d("ChartDebug", "Parsed Date: " + date.toString());
++
++                                    // Get week number from parsed date
++                                    Calendar calendar = Calendar.getInstance();
++                                    calendar.setTime(date);
++                                    int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
++                                    Log.d("ChartDebug", "Week of Year: " + weekOfYear);
++
++                                    // Accumulate savings per week
++                                    weeklySavings.put(weekOfYear,
++                                            weeklySavings.getOrDefault(weekOfYear, 0f) + amount);
++                                }
++                            }
++
++                            // Convert map to chart entries
++                            for (Map.Entry<Integer, Float> entry : weeklySavings.entrySet()) {
++                                entries.add(new Entry(entry.getKey(), entry.getValue()));
++                                Log.d("ChartDebug", "Chart Entry -> Week: " + entry.getKey() + ", Savings: " + entry.getValue());
++                            }
+ 
+-        // Populate data for weeks (X-axis from Week 1 to Week 52)
+-        for (int i = 1; i <= 52; i++) {
+-            float yValue = (float) (Math.random() * 500); // Random value for demonstration
+-            entries.add(new Entry(i, yValue));
+-        }
++                            // Sort entries by week number
++                            Collections.sort(entries, (e1, e2) -> Float.compare(e1.getX(), e2.getX()));
++
++                            // Check if entries are populated
++                            if (entries.isEmpty()) {
++                                Log.w("ChartDebug", "No data available for the chart.");
++                                return;
++                            }
+ 
+-        LineDataSet dataSet = new LineDataSet(entries, "Weekly Savings");
+-        dataSet.setColor(getResources().getColor(R.color.colorPrimary));
+-        dataSet.setValueTextColor(getResources().getColor(R.color.black));
+-        dataSet.setLineWidth(2f);
+-        dataSet.setCircleRadius(4f);
+-        dataSet.setCircleColor(getResources().getColor(R.color.colorPrimaryDark));
++                            // Set up the chart
++                            LineDataSet dataSet = new LineDataSet(entries, "Weekly Savings");
++                            dataSet.setColor(getResources().getColor(R.color.colorPrimary));
++                            dataSet.setValueTextColor(getResources().getColor(R.color.black));
++                            dataSet.setLineWidth(2f);
++                            dataSet.setCircleRadius(4f);
++                            dataSet.setCircleColor(getResources().getColor(R.color.colorPrimaryDark));
+ 
+-        LineData lineData = new LineData(dataSet);
+-        lineChart.setData(lineData);
+-        lineChart.invalidate(); // Refresh the chart
++                            LineData lineData = new LineData(dataSet);
++                            lineChart.setData(lineData);
++                            lineChart.invalidate(); // Refresh chart
+ 
+-        // Customize X-Axis for Week Labels
+-        XAxis xAxis = lineChart.getXAxis();
+-        xAxis.setGranularity(1f); // Display each week
+-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+-        xAxis.setValueFormatter(new com.github.mikephil.charting.formatter.ValueFormatter() {
+-            @Override
+-            public String getFormattedValue(float value) {
+-                return "Week " + ((int) value);
+-            }
+-        });
++                            Log.d("ChartDebug", "Chart successfully updated.");
++
++                            // Customize X-Axis
++                            XAxis xAxis = lineChart.getXAxis();
++                            xAxis.setGranularity(1f);
++                            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
++                            xAxis.setValueFormatter(new com.github.mikephil.charting.formatter.ValueFormatter() {
++                                @Override
++                                public String getFormattedValue(float value) {
++                                    return "Week " + ((int) value);
++                                }
++                            });
++
++                            //Set up other textviews
++                            tvCurrentSavingsAmount.setText(String.valueOf(currentSavingsAmount));
++                            tvGoalPercentage.setText("You are " + Math.round((currentSavingsAmount/137800) * 100) + " percent to your goal");
++
++                            Calendar calendar = Calendar.getInstance();
++                            int currentWeek = calendar.get(Calendar.WEEK_OF_YEAR);
++                            int totalWeeks = calendar.getActualMaximum(Calendar.WEEK_OF_YEAR);
++
++                            int remainingWeeks = totalWeeks - currentWeek;
++
++                            tvRemainingWeeks.setText(remainingWeeks + " weeks remaining to save 😄");
++
++                        } else {
++                            Log.e("ChartDebug", "Failed to fetch transactions: " + task.getException());
++                            Toast.makeText(getActivity(),
++                                    "Failed to load data: " + task.getException().getMessage(),
++                                    Toast.LENGTH_SHORT).show();
++                        }
++                    }
++                });
+     }
++
+ }
+\ No newline at end of file
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[versions]\r\nagp = \"8.8.0\"\r\njunit = \"4.13.2\"\r\njunitVersion = \"1.1.5\"\r\nespressoCore = \"3.5.1\"\r\nappcompat = \"1.6.1\"\r\nlottie = \"6.1.0\"\r\nmaterial = \"1.10.0\"\r\nactivity = \"1.8.0\"\r\nconstraintlayout = \"2.1.4\"\r\nmpandroidchart = \"v3.1.0\"\r\nsdpAndroid = \"1.0.6\"\r\nsspAndroid = \"1.0.6\"\r\ngoogleGmsGoogleServices = \"4.4.2\"\r\nfirebaseAuth = \"23.1.0\"\r\nlifecycleLivedataKtx = \"2.6.1\"\r\nlifecycleViewmodelKtx = \"2.6.1\"\r\nnavigationFragment = \"2.6.0\"\r\nnavigationUi = \"2.6.0\"\r\nfirebaseDatabase = \"21.0.0\"\r\nfirebaseFirestore = \"25.1.1\"\r\n\r\n[libraries]\r\njunit = { group = \"junit\", name = \"junit\", version.ref = \"junit\" }\r\next-junit = { group = \"androidx.test.ext\", name = \"junit\", version.ref = \"junitVersion\" }\r\nespresso-core = { group = \"androidx.test.espresso\", name = \"espresso-core\", version.ref = \"espressoCore\" }\r\nappcompat = { group = \"androidx.appcompat\", name = \"appcompat\", version.ref = \"appcompat\" }\r\nlottie = { module = \"com.airbnb.android:lottie\", version.ref = \"lottie\" }\r\nmaterial = { group = \"com.google.android.material\", name = \"material\", version.ref = \"material\" }\r\nactivity = { group = \"androidx.activity\", name = \"activity\", version.ref = \"activity\" }\r\nconstraintlayout = { group = \"androidx.constraintlayout\", name = \"constraintlayout\", version.ref = \"constraintlayout\" }\r\nmpandroidchart = { module = \"com.github.PhilJay:MPAndroidChart\", version.ref = \"mpandroidchart\" }\r\nsdp-android = { module = \"com.intuit.sdp:sdp-android\", version.ref = \"sdpAndroid\" }\r\nssp-android = { module = \"com.intuit.ssp:ssp-android\", version.ref = \"sspAndroid\" }\r\nfirebase-auth = { group = \"com.google.firebase\", name = \"firebase-auth\", version.ref = \"firebaseAuth\" }\r\nlifecycle-livedata-ktx = { group = \"androidx.lifecycle\", name = \"lifecycle-livedata-ktx\", version.ref = \"lifecycleLivedataKtx\" }\r\nlifecycle-viewmodel-ktx = { group = \"androidx.lifecycle\", name = \"lifecycle-viewmodel-ktx\", version.ref = \"lifecycleViewmodelKtx\" }\r\nnavigation-fragment = { group = \"androidx.navigation\", name = \"navigation-fragment\", version.ref = \"navigationFragment\" }\r\nnavigation-ui = { group = \"androidx.navigation\", name = \"navigation-ui\", version.ref = \"navigationUi\" }\r\nfirebase-database = { group = \"com.google.firebase\", name = \"firebase-database\", version.ref = \"firebaseDatabase\" }\r\nfirebase-firestore = { group = \"com.google.firebase\", name = \"firebase-firestore\", version.ref = \"firebaseFirestore\" }\r\n\r\n[plugins]\r\nandroid-application = { id = \"com.android.application\", version.ref = \"agp\" }\r\ngoogle-gms-google-services = { id = \"com.google.gms.google-services\", version.ref = \"googleGmsGoogleServices\" }\r\n\r\n
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+--- a/gradle/libs.versions.toml	(revision beaa42350d95ca40475a8cc36dc2e169d462692b)
++++ b/gradle/libs.versions.toml	(date 1738156766969)
+@@ -19,6 +19,7 @@
+ navigationUi = "2.6.0"
+ firebaseDatabase = "21.0.0"
+ firebaseFirestore = "25.1.1"
++legacySupportV4 = "1.0.0"
+ 
+ [libraries]
+ junit = { group = "junit", name = "junit", version.ref = "junit" }
+@@ -39,6 +40,7 @@
+ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+ firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
++legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+ 
+ [plugins]
+ android-application = { id = "com.android.application", version.ref = "agp" }
+Index: app/src/main/res/layout/fragment_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".ui.home.HomeFragment\">\r\n\r\n    <ScrollView\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"0dp\"\r\n        android:background=\"@color/colorLightGrey\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <androidx.constraintlayout.widget.ConstraintLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"800dp\">\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/imageView2\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"@dimen/_200sdp\"\r\n                    android:rotation=\"180\"\r\n                    android:scaleType=\"centerCrop\"\r\n                    android:src=\"@drawable/abstract_background\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    app:layout_constraintHorizontal_bias=\"0.0\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_user_name_greeting\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginStart=\"@dimen/_16sdp\"\r\n                    android:layout_marginTop=\"@dimen/_16sdp\"\r\n                    android:text=\"Hey there, Bramm \uD83D\uDC4B\"\r\n                    android:textColor=\"@color/colorPrimaryDarker\"\r\n                    android:textSize=\"@dimen/_16ssp\"\r\n                    android:textStyle=\"bold\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_date\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:text=\"Today is Thursday, 16th January, 2025\"\r\n                    app:layout_constraintStart_toStartOf=\"@+id/tv_user_name_greeting\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/tv_user_name_greeting\" />\r\n\r\n                <androidx.cardview.widget.CardView\r\n                    android:id=\"@+id/cardView\"\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginStart=\"@dimen/_16sdp\"\r\n                    android:layout_marginTop=\"@dimen/_16sdp\"\r\n                    android:layout_marginEnd=\"@dimen/_16sdp\"\r\n                    app:cardBackgroundColor=\"#80E6EFFE\"\r\n                    app:cardCornerRadius=\"@dimen/_4sdp\"\r\n                    app:cardElevation=\"0dp\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/tv_date\">\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"match_parent\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/textView7\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"@dimen/_16sdp\"\r\n                            android:layout_marginTop=\"@dimen/_12sdp\"\r\n                            android:text=\"Balance\"\r\n                            android:textSize=\"@dimen/_12ssp\"\r\n                            android:textStyle=\"bold\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/textView8\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginTop=\"@dimen/_12sdp\"\r\n                            android:layout_marginEnd=\"@dimen/_16sdp\"\r\n                            android:text=\"4,500.00\"\r\n                            android:textSize=\"@dimen/_12ssp\"\r\n                            android:textStyle=\"bold\"\r\n                            app:layout_constraintEnd_toEndOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/textView9\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginTop=\"16dp\"\r\n                            android:layout_marginEnd=\"8dp\"\r\n                            android:background=\"@drawable/currency_tv_background\"\r\n                            android:paddingHorizontal=\"@dimen/_5sdp\"\r\n                            android:text=\"KES\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"@dimen/_12ssp\"\r\n                            android:textStyle=\"bold\"\r\n                            app:layout_constraintEnd_toStartOf=\"@+id/textView8\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <androidx.constraintlayout.widget.ConstraintLayout\r\n                            android:id=\"@+id/constraintLayout\"\r\n                            android:layout_width=\"0dp\"\r\n                            android:layout_height=\"@dimen/_1sdp\"\r\n                            android:layout_marginStart=\"16dp\"\r\n                            android:layout_marginTop=\"12dp\"\r\n                            android:layout_marginEnd=\"16dp\"\r\n                            android:background=\"@color/colorLightGrey\"\r\n                            app:layout_constraintEnd_toEndOf=\"parent\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@+id/textView7\" />\r\n\r\n                        <com.github.mikephil.charting.charts.LineChart\r\n                            android:id=\"@+id/lineChart\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"@dimen/_200sdp\"\r\n                            android:layout_marginStart=\"@dimen/_16sdp\"\r\n                            android:layout_marginEnd=\"@dimen/_16sdp\"\r\n                            android:background=\"#00FFFFFF\"\r\n                            app:layout_constraintEnd_toEndOf=\"parent\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@+id/constraintLayout\" />\r\n\r\n                        <androidx.constraintlayout.widget.ConstraintLayout\r\n                            android:layout_width=\"0dp\"\r\n                            android:layout_height=\"@dimen/_40sdp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:background=\"@color/colorPrimaryLight\"\r\n                            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                            app:layout_constraintEnd_toEndOf=\"parent\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@+id/lineChart\">\r\n\r\n                            <Button\r\n                                android:id=\"@+id/btn_to_add_transaction\"\r\n                                android:layout_width=\"0dp\"\r\n                                android:layout_height=\"0dp\"\r\n                                android:background=\"#00FFFFFF\"\r\n                                android:text=\"Add Transaction\"\r\n                                android:textColor=\"@color/colorPrimaryDarker\"\r\n                                android:textStyle=\"bold\"\r\n                                app:icon=\"@drawable/round_addchart_24\"\r\n                                app:iconGravity=\"textStart\"\r\n                                app:iconTint=\"@color/colorPrimaryDarker\"\r\n                                app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                                app:layout_constraintStart_toStartOf=\"parent\"\r\n                                app:layout_constraintTop_toTopOf=\"parent\" />\r\n                        </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n                </androidx.cardview.widget.CardView>\r\n\r\n                <androidx.cardview.widget.CardView\r\n                    android:id=\"@+id/cardView2\"\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginStart=\"@dimen/_16sdp\"\r\n                    android:layout_marginTop=\"@dimen/_16sdp\"\r\n                    android:layout_marginEnd=\"@dimen/_16sdp\"\r\n                    app:cardCornerRadius=\"@dimen/_4sdp\"\r\n                    app:cardElevation=\"0dp\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toBottomOf=\"@id/cardView\">\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:background=\"@color/colorPrimaryDarker\">\r\n\r\n                        <ImageView\r\n                            android:id=\"@+id/imageView4\"\r\n                            android:layout_width=\"@dimen/_40sdp\"\r\n                            android:layout_height=\"@dimen/_40sdp\"\r\n                            android:layout_marginStart=\"@dimen/_8sdp\"\r\n                            android:layout_marginTop=\"@dimen/_8sdp\"\r\n                            android:layout_marginBottom=\"@dimen/_8sdp\"\r\n                            android:src=\"@drawable/target_money\"\r\n                            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <androidx.constraintlayout.widget.ConstraintLayout\r\n                            android:id=\"@+id/constraintLayout2\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"16dp\"\r\n                            app:layout_constraintBottom_toBottomOf=\"@+id/imageView4\"\r\n                            app:layout_constraintStart_toEndOf=\"@+id/imageView4\"\r\n                            app:layout_constraintTop_toTopOf=\"@+id/imageView4\">\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView10\"\r\n                                android:layout_width=\"wrap_content\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:text=\"You are 50 percent to your goal\"\r\n                                android:textColor=\"@color/white\"\r\n                                android:textStyle=\"bold\"\r\n                                app:layout_constraintStart_toStartOf=\"parent\"\r\n                                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView11\"\r\n                                android:layout_width=\"wrap_content\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:text=\"Just 23 more savings\"\r\n                                android:textColor=\"@color/white\"\r\n                                app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                                app:layout_constraintStart_toStartOf=\"parent\"\r\n                                app:layout_constraintTop_toBottomOf=\"@+id/textView10\" />\r\n                        </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/textView12\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"0dp\"\r\n                            android:layout_marginEnd=\"@dimen/_8sdp\"\r\n                            android:text=\"\uD83D\uDC4D\"\r\n                            android:textSize=\"@dimen/_24ssp\"\r\n                            app:layout_constraintBottom_toBottomOf=\"@+id/constraintLayout2\"\r\n                            app:layout_constraintEnd_toEndOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"@+id/constraintLayout2\" />\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n                </androidx.cardview.widget.CardView>\r\n\r\n                <TextView\r\n                    android:id=\"@+id/textView13\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"@dimen/_16sdp\"\r\n                    android:text=\"Latest Transactions\"\r\n                    android:textSize=\"@dimen/_12ssp\"\r\n                    android:textStyle=\"bold\"\r\n                    app:layout_constraintStart_toStartOf=\"@+id/cardView2\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/cardView2\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/textView14\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"@dimen/_16sdp\"\r\n                    android:text=\"View All\"\r\n                    android:textColor=\"@color/colorPrimary\"\r\n                    android:textSize=\"@dimen/_12ssp\"\r\n                    app:layout_constraintEnd_toEndOf=\"@+id/cardView2\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/cardView2\" />\r\n\r\n                <androidx.cardview.widget.CardView\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"@dimen/_8sdp\"\r\n                    app:cardCornerRadius=\"@dimen/_4sdp\"\r\n                    app:cardElevation=\"0dp\"\r\n                    app:layout_constraintEnd_toEndOf=\"@+id/textView14\"\r\n                    app:layout_constraintStart_toStartOf=\"@+id/textView13\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/textView13\">\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"match_parent\">\r\n\r\n                        <ImageView\r\n                            android:id=\"@+id/imageView5\"\r\n                            android:layout_width=\"@dimen/_24sdp\"\r\n                            android:layout_height=\"@dimen/_24sdp\"\r\n                            android:layout_marginStart=\"@dimen/_8sdp\"\r\n                            android:layout_marginTop=\"@dimen/_8sdp\"\r\n                            android:layout_marginBottom=\"@dimen/_8sdp\"\r\n                            android:src=\"@drawable/round_trending_up_24\"\r\n                            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <androidx.constraintlayout.widget.ConstraintLayout\r\n                            android:layout_width=\"0dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"16dp\"\r\n                            android:layout_marginTop=\"16dp\"\r\n                            android:layout_marginEnd=\"16dp\"\r\n                            android:layout_marginBottom=\"16dp\"\r\n                            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                            app:layout_constraintEnd_toEndOf=\"parent\"\r\n                            app:layout_constraintStart_toEndOf=\"@+id/imageView5\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\">\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView15\"\r\n                                android:layout_width=\"wrap_content\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:text=\"MPesa Deposit\"\r\n                                android:textSize=\"@dimen/_12ssp\"\r\n                                android:textStyle=\"bold\"\r\n                                app:layout_constraintStart_toStartOf=\"parent\"\r\n                                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView16\"\r\n                                android:layout_width=\"wrap_content\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:text=\"12th June 2024 at 5:20 PM\"\r\n                                android:textColor=\"@color/colorPrimaryDark\"\r\n                                app:layout_constraintStart_toStartOf=\"parent\"\r\n                                app:layout_constraintTop_toBottomOf=\"@+id/textView15\" />\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView17\"\r\n                                android:layout_width=\"wrap_content\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:text=\"KES 300\"\r\n                                android:textColor=\"@color/colorSecondary\"\r\n                                android:textSize=\"@dimen/_12ssp\"\r\n                                android:textStyle=\"bold\"\r\n                                app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                                app:layout_constraintTop_toTopOf=\"parent\" />\r\n                        </androidx.constraintlayout.widget.ConstraintLayout>\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n                </androidx.cardview.widget.CardView>\r\n            </androidx.constraintlayout.widget.ConstraintLayout>\r\n        </LinearLayout>\r\n    </ScrollView>\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_home.xml b/app/src/main/res/layout/fragment_home.xml
+--- a/app/src/main/res/layout/fragment_home.xml	(revision beaa42350d95ca40475a8cc36dc2e169d462692b)
++++ b/app/src/main/res/layout/fragment_home.xml	(date 1738156866594)
+@@ -6,9 +6,9 @@
+     android:layout_height="match_parent"
+     tools:context=".ui.home.HomeFragment">
+ 
+-    <ScrollView
++    <androidx.core.widget.NestedScrollView
+         android:layout_width="0dp"
+-        android:layout_height="0dp"
++        android:layout_height="wrap_content"
+         android:background="@color/colorLightGrey"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+@@ -22,7 +22,7 @@
+ 
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:layout_width="match_parent"
+-                android:layout_height="800dp">
++                android:layout_height="wrap_content">
+ 
+                 <ImageView
+                     android:id="@+id/imageView2"
+@@ -88,7 +88,7 @@
+                             app:layout_constraintTop_toTopOf="parent" />
+ 
+                         <TextView
+-                            android:id="@+id/textView8"
++                            android:id="@+id/tv_current_savings_amount"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="@dimen/_12sdp"
+@@ -111,7 +111,7 @@
+                             android:textColor="@color/white"
+                             android:textSize="@dimen/_12ssp"
+                             android:textStyle="bold"
+-                            app:layout_constraintEnd_toStartOf="@+id/textView8"
++                            app:layout_constraintEnd_toStartOf="@+id/tv_current_savings_amount"
+                             app:layout_constraintTop_toTopOf="parent" />
+ 
+                         <androidx.constraintlayout.widget.ConstraintLayout
+@@ -207,7 +207,7 @@
+                             app:layout_constraintTop_toTopOf="@+id/imageView4">
+ 
+                             <TextView
+-                                android:id="@+id/textView10"
++                                android:id="@+id/tv_goal_percentage"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="You are 50 percent to your goal"
+@@ -217,14 +217,14 @@
+                                 app:layout_constraintTop_toTopOf="parent" />
+ 
+                             <TextView
+-                                android:id="@+id/textView11"
++                                android:id="@+id/tv_remaining_weeks"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="Just 23 more savings"
+                                 android:textColor="@color/white"
+                                 app:layout_constraintBottom_toBottomOf="parent"
+                                 app:layout_constraintStart_toStartOf="parent"
+-                                app:layout_constraintTop_toBottomOf="@+id/textView10" />
++                                app:layout_constraintTop_toBottomOf="@+id/tv_goal_percentage" />
+                         </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+                         <TextView
+@@ -262,78 +262,17 @@
+                     app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                     app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+ 
+-                <androidx.cardview.widget.CardView
++                <androidx.recyclerview.widget.RecyclerView
++                    android:id="@+id/rv_recent_transactions"
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+-                    android:layout_marginTop="@dimen/_8sdp"
+-                    app:cardCornerRadius="@dimen/_4sdp"
+-                    app:cardElevation="0dp"
++                    android:layout_marginTop="8dp"
+                     app:layout_constraintEnd_toEndOf="@+id/textView14"
+                     app:layout_constraintStart_toStartOf="@+id/textView13"
+-                    app:layout_constraintTop_toBottomOf="@+id/textView13">
+-
+-                    <androidx.constraintlayout.widget.ConstraintLayout
+-                        android:layout_width="match_parent"
+-                        android:layout_height="match_parent">
++                    app:layout_constraintTop_toBottomOf="@+id/textView13"
++                    tools:listitem="@layout/recent_transactions_card_layout" />
+ 
+-                        <ImageView
+-                            android:id="@+id/imageView5"
+-                            android:layout_width="@dimen/_24sdp"
+-                            android:layout_height="@dimen/_24sdp"
+-                            android:layout_marginStart="@dimen/_8sdp"
+-                            android:layout_marginTop="@dimen/_8sdp"
+-                            android:layout_marginBottom="@dimen/_8sdp"
+-                            android:src="@drawable/round_trending_up_24"
+-                            app:layout_constraintBottom_toBottomOf="parent"
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toTopOf="parent" />
+-
+-                        <androidx.constraintlayout.widget.ConstraintLayout
+-                            android:layout_width="0dp"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="16dp"
+-                            android:layout_marginTop="16dp"
+-                            android:layout_marginEnd="16dp"
+-                            android:layout_marginBottom="16dp"
+-                            app:layout_constraintBottom_toBottomOf="parent"
+-                            app:layout_constraintEnd_toEndOf="parent"
+-                            app:layout_constraintStart_toEndOf="@+id/imageView5"
+-                            app:layout_constraintTop_toTopOf="parent">
+-
+-                            <TextView
+-                                android:id="@+id/textView15"
+-                                android:layout_width="wrap_content"
+-                                android:layout_height="wrap_content"
+-                                android:text="MPesa Deposit"
+-                                android:textSize="@dimen/_12ssp"
+-                                android:textStyle="bold"
+-                                app:layout_constraintStart_toStartOf="parent"
+-                                app:layout_constraintTop_toTopOf="parent" />
+-
+-                            <TextView
+-                                android:id="@+id/textView16"
+-                                android:layout_width="wrap_content"
+-                                android:layout_height="wrap_content"
+-                                android:text="12th June 2024 at 5:20 PM"
+-                                android:textColor="@color/colorPrimaryDark"
+-                                app:layout_constraintStart_toStartOf="parent"
+-                                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+-
+-                            <TextView
+-                                android:id="@+id/textView17"
+-                                android:layout_width="wrap_content"
+-                                android:layout_height="wrap_content"
+-                                android:text="KES 300"
+-                                android:textColor="@color/colorSecondary"
+-                                android:textSize="@dimen/_12ssp"
+-                                android:textStyle="bold"
+-                                app:layout_constraintBottom_toBottomOf="parent"
+-                                app:layout_constraintEnd_toEndOf="parent"
+-                                app:layout_constraintTop_toTopOf="parent" />
+-                        </androidx.constraintlayout.widget.ConstraintLayout>
+-                    </androidx.constraintlayout.widget.ConstraintLayout>
+-                </androidx.cardview.widget.CardView>
+             </androidx.constraintlayout.widget.ConstraintLayout>
+         </LinearLayout>
+-    </ScrollView>
++    </androidx.core.widget.NestedScrollView>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/devbramm/mukuchusavings/models/TransactionRecord.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.devbramm.mukuchusavings.models;\r\n\r\npublic class TransactionRecord {\r\n    private String userName;\r\n    private String uid;\r\n    private String transactid;\r\n    private String transactionType;\r\n    private String transactionDate;\r\n    private String transactionTime;\r\n    private Float transactionAmount;\r\n    private String transactionDescription;\r\n\r\n    public TransactionRecord() {\r\n    }\r\n\r\n    public TransactionRecord(String userName, String uid, String transactid, String transactionType, String transactionDate, String transactionTime, Float transactionAmount, String transactionDescription) {\r\n        this.userName = userName;\r\n        this.uid = uid;\r\n        this.transactid = transactid;\r\n        this.transactionType = transactionType;\r\n        this.transactionDate = transactionDate;\r\n        this.transactionTime = transactionTime;\r\n        this.transactionAmount = transactionAmount;\r\n        this.transactionDescription = transactionDescription;\r\n    }\r\n\r\n    public String getUserName() {\r\n        return userName;\r\n    }\r\n\r\n    public void setUserName(String userName) {\r\n        this.userName = userName;\r\n    }\r\n\r\n    public String getUid() {\r\n        return uid;\r\n    }\r\n\r\n    public void setUid(String uid) {\r\n        this.uid = uid;\r\n    }\r\n\r\n    public String getTransactid() {\r\n        return transactid;\r\n    }\r\n\r\n    public void setTransactid(String transactid) {\r\n        this.transactid = transactid;\r\n    }\r\n\r\n    public String getTransactionType() {\r\n        return transactionType;\r\n    }\r\n\r\n    public void setTransactionType(String transactionType) {\r\n        this.transactionType = transactionType;\r\n    }\r\n\r\n    public String getTransactionDate() {\r\n        return transactionDate;\r\n    }\r\n\r\n    public void setTransactionDate(String transactionDate) {\r\n        this.transactionDate = transactionDate;\r\n    }\r\n\r\n    public String getTransactionTime() {\r\n        return transactionTime;\r\n    }\r\n\r\n    public void setTransactionTime(String transactionTime) {\r\n        this.transactionTime = transactionTime;\r\n    }\r\n\r\n    public Float getTransactionAmount() {\r\n        return transactionAmount;\r\n    }\r\n\r\n    public void setTransactionAmount(Float transactionAmount) {\r\n        this.transactionAmount = transactionAmount;\r\n    }\r\n\r\n    public String getTransactionDescription() {\r\n        return transactionDescription;\r\n    }\r\n\r\n    public void setTransactionDescription(String transactionDescription) {\r\n        this.transactionDescription = transactionDescription;\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/app/src/main/java/com/devbramm/mukuchusavings/models/TransactionRecord.java b/app/src/main/java/com/devbramm/mukuchusavings/models/TransactionRecord.java
+--- a/app/src/main/java/com/devbramm/mukuchusavings/models/TransactionRecord.java	(revision beaa42350d95ca40475a8cc36dc2e169d462692b)
++++ b/app/src/main/java/com/devbramm/mukuchusavings/models/TransactionRecord.java	(date 1738155881668)
+@@ -24,6 +24,9 @@
+         this.transactionDescription = transactionDescription;
+     }
+ 
++    public TransactionRecord(String date, float v) {
++    }
++
+     public String getUserName() {
+         return userName;
+     }
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n    alias(libs.plugins.google.gms.google.services)\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.devbramm.mukuchusavings\"\r\n    compileSdk = 35\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.devbramm.mukuchusavings\"\r\n        minSdk = 29\r\n        targetSdk = 35\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(\r\n                getDefaultProguardFile(\"proguard-android-optimize.txt\"),\r\n                \"proguard-rules.pro\"\r\n            )\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_11\r\n        targetCompatibility = JavaVersion.VERSION_11\r\n    }\r\n    buildFeatures {\r\n        viewBinding = true\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation(libs.appcompat)\r\n    implementation(libs.material)\r\n    implementation(libs.activity)\r\n    implementation(libs.constraintlayout)\r\n    implementation(libs.firebase.auth)\r\n    implementation(libs.lifecycle.livedata.ktx)\r\n    implementation(libs.lifecycle.viewmodel.ktx)\r\n    implementation(libs.navigation.fragment)\r\n    implementation(libs.navigation.ui)\r\n    implementation(libs.firebase.database)\r\n    implementation(libs.firebase.firestore)\r\n    testImplementation(libs.junit)\r\n    androidTestImplementation(libs.ext.junit)\r\n    androidTestImplementation(libs.espresso.core)\r\n    //Scalable Size Unit used for screen sizes\r\n    implementation(libs.sdp.android)\r\n    implementation(libs.ssp.android)\r\n    //For lottie animations\r\n    implementation(libs.lottie)\r\n    //For Charts\r\n    implementation(libs.mpandroidchart)\r\n\r\n}
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+--- a/app/build.gradle.kts	(revision beaa42350d95ca40475a8cc36dc2e169d462692b)
++++ b/app/build.gradle.kts	(date 1738156767115)
+@@ -48,6 +48,7 @@
+     implementation(libs.navigation.ui)
+     implementation(libs.firebase.database)
+     implementation(libs.firebase.firestore)
++    implementation(libs.legacy.support.v4)
+     testImplementation(libs.junit)
+     androidTestImplementation(libs.ext.junit)
+     androidTestImplementation(libs.espresso.core)

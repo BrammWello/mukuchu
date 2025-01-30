@@ -1,0 +1,405 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.devbramm.mukuchusavings"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="29"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:25:5-67
+11-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:25:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:26:5-79
+12-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:26:22-76
+13    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+13-->[com.google.android.recaptcha:recaptcha:18.5.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\a5cc07cd36545499c48319f8cf96116f\transformed\recaptcha-18.5.1\AndroidManifest.xml:9:5-98
+13-->[com.google.android.recaptcha:recaptcha:18.5.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\a5cc07cd36545499c48319f8cf96116f\transformed\recaptcha-18.5.1\AndroidManifest.xml:9:22-95
+14
+15    <permission
+15-->[androidx.core:core:1.9.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\63040bd166180162dd8c858b6a58f82b\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+16        android:name="com.devbramm.mukuchusavings.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+16-->[androidx.core:core:1.9.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\63040bd166180162dd8c858b6a58f82b\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+17        android:protectionLevel="signature" />
+17-->[androidx.core:core:1.9.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\63040bd166180162dd8c858b6a58f82b\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+18
+19    <uses-permission android:name="com.devbramm.mukuchusavings.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+19-->[androidx.core:core:1.9.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\63040bd166180162dd8c858b6a58f82b\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+19-->[androidx.core:core:1.9.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\63040bd166180162dd8c858b6a58f82b\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+20
+21    <application
+21-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:5:5-47:19
+22        android:allowBackup="true"
+22-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:6:9-35
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.9.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\63040bd166180162dd8c858b6a58f82b\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+24        android:dataExtractionRules="@xml/data_extraction_rules"
+24-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:7:9-65
+25        android:debuggable="true"
+26        android:extractNativeLibs="false"
+27        android:fullBackupContent="@xml/backup_rules"
+27-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:8:9-54
+28        android:icon="@mipmap/ic_launcher"
+28-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:9:9-43
+29        android:label="@string/app_name"
+29-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:10:9-41
+30        android:roundIcon="@mipmap/ic_launcher_round"
+30-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:11:9-54
+31        android:supportsRtl="true"
+31-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:12:9-35
+32        android:testOnly="true"
+33        android:theme="@style/Theme.MukuchuSavings" >
+33-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:13:9-52
+34        <activity
+34-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:15:9-19:20
+35            android:name="com.devbramm.mukuchusavings.AddTransactionActivity"
+35-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:16:13-51
+36            android:exported="false" >
+36-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:17:13-37
+37        </activity>
+38        <activity
+38-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:20:9-25:20
+39            android:name="com.devbramm.mukuchusavings.HomePageActivity"
+39-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:21:13-45
+40            android:exported="false"
+40-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:22:13-37
+41            android:label="@string/title_activity_home_page" >
+41-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:23:13-61
+42        </activity>
+43        <activity
+43-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:26:9-28:40
+44            android:name="com.devbramm.mukuchusavings.HomeActivity"
+44-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:27:13-41
+45            android:exported="false" />
+45-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:28:13-37
+46        <activity
+46-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:29:9-31:40
+47            android:name="com.devbramm.mukuchusavings.SignInActivity"
+47-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:30:13-43
+48            android:exported="false" />
+48-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:31:13-37
+49        <activity
+49-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:32:9-42:20
+50            android:name="com.devbramm.mukuchusavings.MainActivity"
+50-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:33:13-41
+51            android:exported="true" >
+51-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:34:13-36
+52            <intent-filter>
+52-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:36:13-40:29
+53                <action android:name="android.intent.action.MAIN" />
+53-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:37:17-69
+53-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:37:25-66
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+55-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:39:17-77
+55-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:39:27-74
+56            </intent-filter>
+57        </activity>
+58
+59        <meta-data
+59-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:44:9-46:57
+60            android:name="preloaded_fonts"
+60-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:45:13-43
+61            android:resource="@array/preloaded_fonts" />
+61-->C:\Users\bramwell.okoth\AndroidStudioProjects\MukuchuSavings\app\src\main\AndroidManifest.xml:46:13-54
+62
+63        <activity
+63-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:29:9-46:20
+64            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+64-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:30:13-80
+65            android:excludeFromRecents="true"
+65-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:31:13-46
+66            android:exported="true"
+66-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:32:13-36
+67            android:launchMode="singleTask"
+67-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:33:13-44
+68            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+68-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:34:13-72
+69            <intent-filter>
+69-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:35:13-45:29
+70                <action android:name="android.intent.action.VIEW" />
+70-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:36:17-69
+70-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:36:25-66
+71
+72                <category android:name="android.intent.category.DEFAULT" />
+72-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:38:17-76
+72-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:38:27-73
+73                <category android:name="android.intent.category.BROWSABLE" />
+73-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:39:17-78
+73-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:39:27-75
+74
+75                <data
+75-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:41:17-44:51
+76                    android:host="firebase.auth"
+76-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:42:21-49
+77                    android:path="/"
+77-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:43:21-37
+78                    android:scheme="genericidp" />
+78-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:44:21-48
+79            </intent-filter>
+80        </activity>
+81        <activity
+81-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:47:9-64:20
+82            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+82-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:48:13-79
+83            android:excludeFromRecents="true"
+83-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:49:13-46
+84            android:exported="true"
+84-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:50:13-36
+85            android:launchMode="singleTask"
+85-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:51:13-44
+86            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+86-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:52:13-72
+87            <intent-filter>
+87-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:53:13-63:29
+88                <action android:name="android.intent.action.VIEW" />
+88-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:36:17-69
+88-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:36:25-66
+89
+90                <category android:name="android.intent.category.DEFAULT" />
+90-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:38:17-76
+90-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:38:27-73
+91                <category android:name="android.intent.category.BROWSABLE" />
+91-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:39:17-78
+91-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:39:27-75
+92
+93                <data
+93-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:41:17-44:51
+94                    android:host="firebase.auth"
+94-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:42:21-49
+95                    android:path="/"
+95-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:43:21-37
+96                    android:scheme="recaptcha" />
+96-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:44:21-48
+97            </intent-filter>
+98        </activity>
+99
+100        <service
+100-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:66:9-72:19
+101            android:name="com.google.firebase.components.ComponentDiscoveryService"
+101-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:67:13-84
+102            android:directBootAware="true"
+102-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:32:13-43
+103            android:exported="false" >
+103-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:68:13-37
+104            <meta-data
+104-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:69:13-71:85
+105                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+105-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:70:17-109
+106                android:value="com.google.firebase.components.ComponentRegistrar" />
+106-->[com.google.firebase:firebase-auth:23.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\5397b57ba4df30bb6a32e6cc605d32c6\transformed\firebase-auth-23.1.0\AndroidManifest.xml:71:17-82
+107            <meta-data
+107-->[com.google.firebase:firebase-database:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e142d1ad43248ddcba0f53105b4a2909\transformed\firebase-database-21.0.0\AndroidManifest.xml:29:13-31:85
+108                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+108-->[com.google.firebase:firebase-database:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e142d1ad43248ddcba0f53105b4a2909\transformed\firebase-database-21.0.0\AndroidManifest.xml:30:17-120
+109                android:value="com.google.firebase.components.ComponentRegistrar" />
+109-->[com.google.firebase:firebase-database:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e142d1ad43248ddcba0f53105b4a2909\transformed\firebase-database-21.0.0\AndroidManifest.xml:31:17-82
+110            <meta-data
+110-->[com.google.firebase:firebase-database:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e142d1ad43248ddcba0f53105b4a2909\transformed\firebase-database-21.0.0\AndroidManifest.xml:32:13-34:85
+111                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+111-->[com.google.firebase:firebase-database:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e142d1ad43248ddcba0f53105b4a2909\transformed\firebase-database-21.0.0\AndroidManifest.xml:33:17-109
+112                android:value="com.google.firebase.components.ComponentRegistrar" />
+112-->[com.google.firebase:firebase-database:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e142d1ad43248ddcba0f53105b4a2909\transformed\firebase-database-21.0.0\AndroidManifest.xml:34:17-82
+113            <meta-data
+113-->[com.google.firebase:firebase-firestore:25.1.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\3e44a3564ad3887f727f98fedda99335\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:17:13-19:85
+114                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+114-->[com.google.firebase:firebase-firestore:25.1.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\3e44a3564ad3887f727f98fedda99335\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:18:17-122
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->[com.google.firebase:firebase-firestore:25.1.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\3e44a3564ad3887f727f98fedda99335\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:19:17-82
+116            <meta-data
+116-->[com.google.firebase:firebase-firestore:25.1.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\3e44a3564ad3887f727f98fedda99335\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:20:13-22:85
+117                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+117-->[com.google.firebase:firebase-firestore:25.1.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\3e44a3564ad3887f727f98fedda99335\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:21:17-111
+118                android:value="com.google.firebase.components.ComponentRegistrar" />
+118-->[com.google.firebase:firebase-firestore:25.1.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\3e44a3564ad3887f727f98fedda99335\transformed\firebase-firestore-25.1.1\AndroidManifest.xml:22:17-82
+119            <meta-data
+119-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\013f133dfd12c66e31887622aa598e6d\transformed\firebase-common-ktx-21.0.0\AndroidManifest.xml:12:13-14:85
+120                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+120-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\013f133dfd12c66e31887622aa598e6d\transformed\firebase-common-ktx-21.0.0\AndroidManifest.xml:13:17-116
+121                android:value="com.google.firebase.components.ComponentRegistrar" />
+121-->[com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\013f133dfd12c66e31887622aa598e6d\transformed\firebase-common-ktx-21.0.0\AndroidManifest.xml:14:17-82
+122            <meta-data
+122-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:35:13-37:85
+123                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+123-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:36:17-109
+124                android:value="com.google.firebase.components.ComponentRegistrar" />
+124-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:37:17-82
+125        </service>
+126        <service
+126-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:24:9-32:19
+127            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+127-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:25:13-94
+128            android:enabled="true"
+128-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:26:13-35
+129            android:exported="false" >
+129-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:27:13-37
+130            <meta-data
+130-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:29:13-31:104
+131                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+131-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:30:17-76
+132                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+132-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:31:17-101
+133        </service>
+134
+135        <activity
+135-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:34:9-41:20
+136            android:name="androidx.credentials.playservices.HiddenActivity"
+136-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:35:13-76
+137            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+137-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:36:13-87
+138            android:enabled="true"
+138-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:37:13-35
+139            android:exported="false"
+139-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:38:13-37
+140            android:fitsSystemWindows="true"
+140-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:39:13-45
+141            android:theme="@style/Theme.Hidden" >
+141-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\31d4c8805703dddc7273e2ee6e5eb408\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:40:13-48
+142        </activity>
+143        <activity
+143-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:23:9-27:75
+144            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+144-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:24:13-93
+145            android:excludeFromRecents="true"
+145-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:25:13-46
+146            android:exported="false"
+146-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:26:13-37
+147            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+147-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:27:13-72
+148        <!--
+149            Service handling Google Sign-In user revocation. For apps that do not integrate with
+150            Google Sign-In, this service will never be started.
+151        -->
+152        <service
+152-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:33:9-37:51
+153            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+153-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:34:13-89
+154            android:exported="true"
+154-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:35:13-36
+155            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+155-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:36:13-107
+156            android:visibleToInstantApps="true" />
+156-->[com.google.android.gms:play-services-auth:20.7.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\b838bcad1a9cb3742cca1bdf28f83840\transformed\play-services-auth-20.7.0\AndroidManifest.xml:37:13-48
+157
+158        <provider
+158-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:23:9-28:39
+159            android:name="com.google.firebase.provider.FirebaseInitProvider"
+159-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:24:13-77
+160            android:authorities="com.devbramm.mukuchusavings.firebaseinitprovider"
+160-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:25:13-72
+161            android:directBootAware="true"
+161-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:26:13-43
+162            android:exported="false"
+162-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:27:13-37
+163            android:initOrder="100" />
+163-->[com.google.firebase:firebase-common:21.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\e0f9165d62e79651a4dace5d14c8449b\transformed\firebase-common-21.0.0\AndroidManifest.xml:28:13-36
+164
+165        <activity
+165-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\55e737eb56cb4fb6958db675ae37f47d\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+166            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+166-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\55e737eb56cb4fb6958db675ae37f47d\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+167            android:exported="false"
+167-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\55e737eb56cb4fb6958db675ae37f47d\transformed\play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+168            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+168-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\55e737eb56cb4fb6958db675ae37f47d\transformed\play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+169
+170        <provider
+170-->[androidx.emoji2:emoji2:1.2.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\9999b1d15da0d955db08015d73edd96e\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+171            android:name="androidx.startup.InitializationProvider"
+171-->[androidx.emoji2:emoji2:1.2.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\9999b1d15da0d955db08015d73edd96e\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+172            android:authorities="com.devbramm.mukuchusavings.androidx-startup"
+172-->[androidx.emoji2:emoji2:1.2.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\9999b1d15da0d955db08015d73edd96e\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+173            android:exported="false" >
+173-->[androidx.emoji2:emoji2:1.2.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\9999b1d15da0d955db08015d73edd96e\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+174            <meta-data
+174-->[androidx.emoji2:emoji2:1.2.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\9999b1d15da0d955db08015d73edd96e\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+175                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+175-->[androidx.emoji2:emoji2:1.2.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\9999b1d15da0d955db08015d73edd96e\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+176                android:value="androidx.startup" />
+176-->[androidx.emoji2:emoji2:1.2.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\9999b1d15da0d955db08015d73edd96e\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+177            <meta-data
+177-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\311cae118aeb510d2582915b5dd662a4\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+178                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+178-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\311cae118aeb510d2582915b5dd662a4\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+179                android:value="androidx.startup" />
+179-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\311cae118aeb510d2582915b5dd662a4\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+180            <meta-data
+180-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+181                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+181-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+182                android:value="androidx.startup" />
+182-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+183        </provider>
+184
+185        <uses-library
+185-->[androidx.window:window:1.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\08158a3b69c6cda9b90173e59873bd02\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+186            android:name="androidx.window.extensions"
+186-->[androidx.window:window:1.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\08158a3b69c6cda9b90173e59873bd02\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+187            android:required="false" />
+187-->[androidx.window:window:1.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\08158a3b69c6cda9b90173e59873bd02\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+188        <uses-library
+188-->[androidx.window:window:1.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\08158a3b69c6cda9b90173e59873bd02\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+189            android:name="androidx.window.sidecar"
+189-->[androidx.window:window:1.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\08158a3b69c6cda9b90173e59873bd02\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+190            android:required="false" />
+190-->[androidx.window:window:1.0.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\08158a3b69c6cda9b90173e59873bd02\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+191
+192        <meta-data
+192-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\44fdb4b7d83af99a6c96298c5a24451d\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+193            android:name="com.google.android.gms.version"
+193-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\44fdb4b7d83af99a6c96298c5a24451d\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+194            android:value="@integer/google_play_services_version" />
+194-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\44fdb4b7d83af99a6c96298c5a24451d\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+195
+196        <receiver
+196-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+197            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+197-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+198            android:directBootAware="false"
+198-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+199            android:enabled="true"
+199-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+200            android:exported="true"
+200-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+201            android:permission="android.permission.DUMP" >
+201-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+202            <intent-filter>
+202-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+203                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+203-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+203-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+204            </intent-filter>
+205            <intent-filter>
+205-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+206                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+206-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+206-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+207            </intent-filter>
+208            <intent-filter>
+208-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+209                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+209-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+209-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+210            </intent-filter>
+211            <intent-filter>
+211-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+212                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+212-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+212-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\8954a92bbf41eff3648e7894f846305e\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+213            </intent-filter>
+214        </receiver> <!-- The activities will be merged into the manifest of the hosting app. -->
+215        <activity
+215-->[com.google.android.play:core-common:2.0.3] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\12a7142d96675ee33b8a17cb830ae1bf\transformed\core-common-2.0.3\AndroidManifest.xml:14:9-18:65
+216            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+216-->[com.google.android.play:core-common:2.0.3] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\12a7142d96675ee33b8a17cb830ae1bf\transformed\core-common-2.0.3\AndroidManifest.xml:15:13-93
+217            android:exported="false"
+217-->[com.google.android.play:core-common:2.0.3] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\12a7142d96675ee33b8a17cb830ae1bf\transformed\core-common-2.0.3\AndroidManifest.xml:16:13-37
+218            android:stateNotNeeded="true"
+218-->[com.google.android.play:core-common:2.0.3] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\12a7142d96675ee33b8a17cb830ae1bf\transformed\core-common-2.0.3\AndroidManifest.xml:17:13-42
+219            android:theme="@style/Theme.PlayCore.Transparent" />
+219-->[com.google.android.play:core-common:2.0.3] C:\Users\bramwell.okoth\.gradle\caches\8.10.2\transforms\12a7142d96675ee33b8a17cb830ae1bf\transformed\core-common-2.0.3\AndroidManifest.xml:18:13-62
+220    </application>
+221
+222</manifest>

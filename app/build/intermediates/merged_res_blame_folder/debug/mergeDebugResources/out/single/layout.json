@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/recent_transactions_card_layout.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/recent_transactions_card_layout.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/activity_sign_in.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_sign_in.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/fragment_dashboard.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/activity_main.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/activity_home.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/dialog_loading.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/dialog_loading.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/activity_home_page.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_home_page.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/fragment_home.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/fragment_notifications.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/fragment_notifications.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-mergeDebugResources-56:/layout/activity_add_transaction.xml",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_add_transaction.xml"
+    }
+]

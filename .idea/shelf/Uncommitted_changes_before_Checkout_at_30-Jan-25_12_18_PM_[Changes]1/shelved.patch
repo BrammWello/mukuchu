@@ -1,0 +1,148 @@
+Index: app/src/main/res/layout/recent_transactions_card_layout.xml
+===================================================================
+diff --git a/app/src/main/res/layout/recent_transactions_card_layout.xml b/app/src/main/res/layout/recent_transactions_card_layout.xml
+new file mode 100644
+--- /dev/null	(date 1738156374669)
++++ b/app/src/main/res/layout/recent_transactions_card_layout.xml	(date 1738156374669)
+@@ -0,0 +1,79 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content">
++
++    <androidx.cardview.widget.CardView
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:layout_marginBottom="8dp"
++        app:cardCornerRadius="@dimen/_4sdp"
++        app:cardElevation="0dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++
++        <androidx.constraintlayout.widget.ConstraintLayout
++            android:layout_width="match_parent"
++            android:layout_height="match_parent">
++
++            <ImageView
++                android:id="@+id/imageView5"
++                android:layout_width="@dimen/_24sdp"
++                android:layout_height="@dimen/_24sdp"
++                android:layout_marginStart="@dimen/_8sdp"
++                android:layout_marginTop="@dimen/_8sdp"
++                android:layout_marginBottom="@dimen/_8sdp"
++                android:src="@drawable/round_trending_up_24"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginStart="16dp"
++                android:layout_marginTop="16dp"
++                android:layout_marginEnd="16dp"
++                android:layout_marginBottom="16dp"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintStart_toEndOf="@+id/imageView5"
++                app:layout_constraintTop_toTopOf="parent">
++
++                <TextView
++                    android:id="@+id/tv_item_trans_type"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:text="MPesa Deposit"
++                    android:textSize="@dimen/_12ssp"
++                    android:textStyle="bold"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++
++                <TextView
++                    android:id="@+id/tv_item_date"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:text="12th June 2024 at 5:20 PM"
++                    android:textColor="@color/colorPrimaryDark"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toBottomOf="@+id/tv_item_trans_type" />
++
++                <TextView
++                    android:id="@+id/tv_item_amount"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:text="KES 300"
++                    android:textColor="@color/colorSecondary"
++                    android:textSize="@dimen/_12ssp"
++                    android:textStyle="bold"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++            </androidx.constraintlayout.widget.ConstraintLayout>
++        </androidx.constraintlayout.widget.ConstraintLayout>
++    </androidx.cardview.widget.CardView>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/devbramm/mukuchusavings/adapters/RecentTransactionsAdapter.java
+===================================================================
+diff --git a/app/src/main/java/com/devbramm/mukuchusavings/adapters/RecentTransactionsAdapter.java b/app/src/main/java/com/devbramm/mukuchusavings/adapters/RecentTransactionsAdapter.java
+new file mode 100644
+--- /dev/null	(date 1738156446479)
++++ b/app/src/main/java/com/devbramm/mukuchusavings/adapters/RecentTransactionsAdapter.java	(date 1738156446479)
+@@ -0,0 +1,54 @@
++package com.devbramm.mukuchusavings.adapters;
++
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++
++import com.devbramm.mukuchusavings.R;
++import com.devbramm.mukuchusavings.models.TransactionRecord;
++
++import java.util.List;
++
++public class RecentTransactionsAdapter extends RecyclerView.Adapter<RecentTransactionsAdapter.RecentTransactionViewHolder> {
++
++    private List<TransactionRecord> transactionRecordList;
++
++    public RecentTransactionsAdapter(List<TransactionRecord> transactionRecordList) {
++        this.transactionRecordList = transactionRecordList;
++    }
++
++    @NonNull
++    @Override
++    public RecentTransactionsAdapter.RecentTransactionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recent_transactions_card_layout, parent, false);
++        return new RecentTransactionViewHolder(view);
++    }
++
++    @Override
++    public void onBindViewHolder(@NonNull RecentTransactionsAdapter.RecentTransactionViewHolder holder, int position) {
++        holder.tvDate.setText(transactionRecordList.get(position).getTransactionDate());
++        holder.tvType.setText(transactionRecordList.get(position).getTransactionType());
++        holder.tvAmount.setText(transactionRecordList.get(position).getTransactionAmount().toString());
++    }
++
++    @Override
++    public int getItemCount() {
++        return transactionRecordList.size();
++    }
++
++    public class RecentTransactionViewHolder extends RecyclerView.ViewHolder {
++
++        private TextView tvType, tvDate, tvAmount;
++        public RecentTransactionViewHolder(@NonNull View itemView) {
++            super(itemView);
++
++            tvAmount = itemView.findViewById(R.id.tv_item_amount);
++            tvType = itemView.findViewById(R.id.tv_item_trans_type);
++            tvDate = itemView.findViewById(R.id.tv_item_date);
++        }
++    }
++}

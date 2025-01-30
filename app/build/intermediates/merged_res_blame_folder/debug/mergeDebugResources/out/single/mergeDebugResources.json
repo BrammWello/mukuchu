@@ -1,0 +1,234 @@
+[
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_person_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_person_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/font_rubik.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/font/rubik.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_recent_transactions_card_layout.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/recent_transactions_card_layout.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_email_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_email_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/xml_backup_rules.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_password_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_password_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_illustration_2.jpg.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/illustration_2.jpg"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_date_range_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_date_range_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_fragment_dashboard.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/navigation_mobile_navigation.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/navigation/mobile_navigation.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_activity_home.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_target_money.png.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/target_money.png"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_currency_tv_background.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/currency_tv_background.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_illustration_6.jpg.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/illustration_6.jpg"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_fragment_notifications.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/fragment_notifications.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_monetization_on_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_monetization_on_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_illustration_3.jpg.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/illustration_3.jpg"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_ic_dashboard_black_24dp.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/ic_dashboard_black_24dp.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/raw_pig_growing.json.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/raw/pig_growing.json"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/font_rubik_regular.ttf.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/font/rubik_regular.ttf"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/raw_money_loading.json.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/raw/money_loading.json"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/raw_success.json.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/raw/success.json"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_trending_up_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_trending_up_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_abstract_background.png.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/abstract_background.png"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_check_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_check_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_ic_home_black_24dp.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_illustration_4.jpg.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/illustration_4.jpg"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_menu_open_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_menu_open_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/xml_data_extraction_rules.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_activity_sign_in.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_sign_in.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/raw_fail.json.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/raw/fail.json"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_addchart_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_addchart_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_activity_home_page.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_home_page.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_fragment_home.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_chevron_left_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_chevron_left_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_activity_add_transaction.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_add_transaction.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_illustration_1.jpg.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/illustration_1.jpg"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_access_time_filled_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_access_time_filled_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_dialog_loading.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/dialog_loading.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_round_library_books_24.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/round_library_books_24.xml"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/drawable_illustration_5.jpg.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/drawable/illustration_5.jpg"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.devbramm.mukuchusavings.app-debug-57:/layout_activity_main.xml.flat",
+        "source": "com.devbramm.mukuchusavings.app-main-59:/layout/activity_main.xml"
+    }
+]
