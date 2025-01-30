@@ -24,6 +24,9 @@ public class TransactionRecord {
         this.transactionDescription = transactionDescription;
     }
 
+    public TransactionRecord(String date, float v) {
+    }
+
     public String getUserName() {
         return userName;
     }

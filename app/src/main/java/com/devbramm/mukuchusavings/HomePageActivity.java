@@ -13,11 +13,13 @@ import androidx.navigation.ui.NavigationUI;
 import com.devbramm.mukuchusavings.databinding.ActivityHomePageBinding;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomePageActivity extends AppCompatActivity {
 
     private ActivityHomePageBinding binding;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +36,16 @@ public class HomePageActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this); // Initialize Firebase once
 
-
         // Removed ActionBar setup
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-
     }
-
-
 
     public FirebaseAuth getFirebaseAuth() {
         return mAuth;
+    }
+
+    public FirebaseFirestore getFirebaseFirestore() {
+        return db;
     }
 
 //    public FirebaseDatabase getFirebaseDatabase() {
